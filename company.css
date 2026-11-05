@@ -78,37 +78,80 @@ nav ul li a:hover {
 #home {
     min-height: 80vh;
     padding: 80px 8%;
+    position: relative;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    grid-template-columns: 60px minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: 25px;
     align-items: center;
     background: linear-gradient(135deg,var(--primary),#163b68);
+    overflow: hidden;
+
 }
-#home.home-content {
-    max-width: 700px;
+.home-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    left: 0;
 }
-#home h1 {
+.home-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    overflow: hidden;
+}
+.home-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(6, 21, 42, 0.55);
+}
+.home-content {
+    width: min(88%, 1200px);
+    margin: 0 auto;
+    padding-top: 40px;
+    position: relative;
+    z-index: 2;
+}
+.home-content .eyebrow {
+    color: var(--accent);
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+.home-content h1 {
     font-size: 3rem;
     line-height: 1.2;
     font-weight: 700;
     color: var(--white);
-    margin-bottom: 1rem;
+    max-width: 750px;
+    margin-bottom: 20px;
 }
-#home p {
-    font-size: 1.1rem;
+.home-content {
+    max-width: 12000px;
+}
+.home-content p {
+    font-size: 1rem;
+    line-height: 1.7;
     color: #d9e2ec;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+
 }
-#home .get-started {
-    display: inline-block;
-    padding: 14px 28px;
-    background-color: var(--accent);
-    color: var(--primary-dark);
-    text-decoration: none;
-    font-weight: bold;
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.hero-buttons button {
+    padding: 12px 22px;
+    border: none;
     border-radius: 5px;
-    transition: 0.3s;
-}
-#home .get-started:hover {
-    background-color: var(--white);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
 }
 .about-hero {
     padding: 80px 8%;
@@ -249,21 +292,28 @@ nav ul li a:hover {
 }
 .about-section .eyebrow {
     color: var(--secondary);
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 700;
     letter-spacing: 2px;
     margin-bottom: 12px;
 }
 .about-section h2 {
-    color: var(--primary);
-    font-size: 36px;
+    color: var(--primary-dark);
+    font-size: 46px;
     max-width: 700px;
     margin: 0 auto 20px;
     line-height: 1.7;
 }
+.about-section h3 {
+    color: var(--primary-dark);
+    font-size: 30px;
+    max-width: 700px;
+    line-height: 1.7;
+    margin: 0 auto 20px;
+}
 .about-section p:not(.eyebrow) {
     color: var(--text);
-    font-size: 16px;
+    font-size: 20px;
     line-height: 1.8;
     max-width: 700px;
     margin: 0 auto;
@@ -289,25 +339,49 @@ nav ul li a:hover {
     font-size: 36px;
     margin-bottom: 20px;
 }
+.services-container {
+    width: min(86%, 1120px);
+    margin: 14px auto 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 15px;
+}
 .services-card {
+    min-width: 90%;
+    min-height: 90%;
+    position: relative;
+    overflow: hidden;
     background: var(--white);
-    padding: 30px;
+    padding: 0;
     border-radius: 12px;
     border: 1px solid var(--border);
     box-shadow: 0 8px 20px rgba(16, 35, 27, 0.08);
+    overflow: hidden;
     text-align: left;
+}
+.card-image {
+    height: 250px;
+    width: 100%;
+    overflow: hidden;
+}
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .services-card h3 {
     color: var(--primary);
     font-size: 20px;
-    margin-bottom: 12px;
+    margin: 20px 20px 12px;
 }
 
 .services-card p {
     color: var(--text);
     font-size: 15px;
     line-height: 1.7;
+    margin: 0 20px 20px;
 }
 #projects {
     padding: 80px 8%;
@@ -320,25 +394,50 @@ nav ul li a:hover {
     font-size: 36px;
     margin-bottom: 40px;
 }
+.projects-container {
+    width: min(86%, 1120px);
+    margin: 14px auto 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 15px;
+}
 .project-card {
+    min-width: 90%;
+    min-height: 90%;
+    position: relative;
+    overflow: hidden;
     background: var(--white);
-    padding: 30px;
+    padding: 0;
     border-radius: 12px;
     border: 1px solid var(--border);
     box-shadow: 0 8px 20px rgba(16, 35, 27, 0.08);
-    text-align: left;
+    overflow: hidden;
+}
+
+.card-image {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+}
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .project-card h3 {
     color: var(--primary);
     font-size: 20px;
-    margin-bottom: 12px;
+    margin: 20px 20px 12px;
+    line-height: 1.4;
 }
 
 .project-card p {
     color: var(--text);
     font-size: 15px;
     line-height: 1.7;
+    margin: 0  20px 20px;
 }
 /* FAQ Section */
 #faq {
@@ -573,22 +672,37 @@ nav ul li a:hover {
 
 .service-card {
     background: var(--white);
-    padding: 35px 30px;
+    padding: 0;
     border: 1px solid var(--border);
     border-radius: 12px;
     box-shadow: 0 8px 25px rgba(16, 35, 27, 0.06);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+.service-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+
+}
+.service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .service-card h3 {
     color: var(--primary);
     font-size: 21px;
-    margin-bottom: 15px;
+    margin: 20px 20px 12px;
 }
 
 .service-card p {
     color: var(--text);
     line-height: 1.7;
+    font-size: 15px;
+    margin: 0 20px 20px;
 }
 
 
@@ -1007,6 +1121,24 @@ nav ul li a:hover {
     color: var(--secondary);
     font-weight: 600;
 }
+#projects .project-card {
+    padding: 0 !important;
+    overflow: hidden;
+}
+#projects .project-card > .card-image {
+    width: 100% !important;
+    height: 220px;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+#projects .project-card > .card-image > img {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+    object-fit: cover;
+    margin: 0 !important;
+    max-width: none;
+}
 
 
 
@@ -1046,8 +1178,9 @@ nav ul li a:hover {
 }
 
     #home {
+        grid-template-columns: 1fr;
         min-height: auto;
-        padding: 60px 5%;
+        padding: 70px 7%;
         flex-direction: column;
         align-items: flex-start;
     }
@@ -1060,11 +1193,11 @@ nav ul li a:hover {
         font-size: 2.2rem;
     }
 
-    #home p {
+    .hero-content p {
         font-size: 1rem;
     }
 
-    #home .get-started {
+    .hero-buttons {
         padding: 12px 22px;
     }
     #stats {
